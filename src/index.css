@@ -1,0 +1,10 @@
+:root {
+  --green: #5ece7b;
+  --black: #1d1f22;
+  --animation-duration: 250ms;
+}
+
+body {
+  margin: 0;
+  font-family: "Raleway";
+}
