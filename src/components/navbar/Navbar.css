@@ -5,7 +5,7 @@
   grid-template-columns: 1fr 1fr 1fr;
 }
 
-.Navbar ul {
+.Navbar .categories {
   padding: 0;
   margin: 0;
   display: inline-block;
@@ -14,7 +14,7 @@
   text-transform: uppercase;
 }
 
-.Navbar li {
+.Navbar .categories li {
   display: inline-block;
   padding: 1.75rem 1rem 2rem 1rem;
   font-weight: 400;
@@ -23,13 +23,13 @@
   transition: color var(--animation-duration);
 }
 
-.Navbar li:hover {
+.Navbar .categories li:hover {
   cursor: pointer;
   font-weight: 600;
   color: var(--green);
 }
 
-.Navbar li::after {
+.Navbar .categories li::after {
   display: block;
   content: "";
   border-bottom: 2px solid var(--green);
@@ -37,7 +37,7 @@
   transition: transform var(--animation-duration) ease-in-out;
 }
 
-.Navbar li:hover::after {
+.Navbar .categories li:hover::after {
   transform: translateY(2rem) scaleX(1.2);
 }
 
@@ -54,7 +54,7 @@
 }
 
 @media only screen and (max-width: 1024px) {
-  .Navbar li {
+  .Navbar .categories li {
     font-size: 0.75rem;
     padding: 1.75rem 0.75rem 2rem 0.75rem;
   }
@@ -73,7 +73,7 @@
     order: 1;
   }
 
-  .Navbar ul {
+  .Navbar .categories {
     order: 2;
     display: flex;
     flex-direction: column;
@@ -81,17 +81,17 @@
     align-self: center;
   }
 
-  .Navbar li {
+  .Navbar .categories li {
     padding: 1rem;
     font-size: 0.75rem;
   }
 
-  .Navbar li::after {
+  .Navbar .categories li::after {
     transform: translateY(0.5rem) scaleX(0);
     transition: transform var(--animation-duration) ease-in-out;
   }
 
-  .Navbar li:hover::after {
+  .Navbar .categories li:hover::after {
     transform: translateY(0.5rem) scaleX(1.2);
   }
 

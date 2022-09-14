@@ -22,6 +22,10 @@
   transition: transform var(--animation-duration) ease-in-out;
 }
 
+.Currencies .dropdown {
+  display: none;
+}
+
 @media only screen and (max-width: 768px) {
   .Currencies {
     column-gap: 8px;

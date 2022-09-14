@@ -7,22 +7,31 @@ import EmptyCart from "../../assets/icons/empty_cart.svg";
 import { getCategoriesAndCurrenciesQuery } from "../../queries/queries";
 
 class Navbar extends Component {
-  handleCategoryClick = (e) => {
-    console.log("meow");
+  handleCategoryClick = (categoryName) => {
+    console.log(categoryName);
   };
 
+  displayCategories = () =>
+    !this.props.data.loading
+      ? this.props.data.categories.map((category) => (
+          <li
+            key={category.name}
+            onClick={() => {
+              this.handleCategoryClick(category.name);
+            }}
+          >
+            {category.name}
+          </li>
+        ))
+      : null;
+
   render() {
-    console.log(this.props);
     return (
       <div className="Navbar">
-        <ul>
-          <li onClick={this.handleCategoryClick}>women</li>
-          <li>men</li>
-          <li>kids</li>
-        </ul>
+        <ul className="categories">{this.displayCategories()}</ul>
         <img src={BrandIcon} className="logo" alt="a brand logo" />
         <div className="currency-cart">
-          <Currencies />
+          <Currencies currencies={this.props.data.currencies} />
           <img src={EmptyCart} alt="a cart icon" />
         </div>
       </div>
