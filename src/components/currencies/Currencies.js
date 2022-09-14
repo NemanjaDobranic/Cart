@@ -10,6 +10,7 @@ class Currencies extends Component {
     isOpened: false,
     classNames: {
       arrow: "",
+      dropdown: "",
     },
   };
 
@@ -18,42 +19,54 @@ class Currencies extends Component {
       this.setState({
         ...this.state,
         currencies: this.props.currencies,
-        selected: this.props.currencies.find((currency) => {
-          if (currency.label.toLowerCase() === "usd") return currency;
-        }),
+        selected: this.props.currencies.find(
+          (currency) => currency.label.toLowerCase() === "usd"
+        ),
       });
     }
   }
 
-  handleCurrenciesClick = () => {
+  openCurrencies = () => {
     this.state.isOpened
       ? this.setState({
           isOpened: false,
           classNames: {
             arrow: "",
+            dropdown: "hide",
           },
         })
       : this.setState({
           isOpened: true,
           classNames: {
-            arrow: "opened",
+            arrow: "rotate",
+            dropdown: "show",
           },
         });
   };
 
+  setActiveCurrency = (currency) => {
+    this.setState({
+      ...this.state,
+      selected: currency,
+    });
+  };
+
   render() {
     return (
-      <div className="Currencies" onClick={this.handleCurrenciesClick}>
+      <div className="Currencies" onClick={this.openCurrencies}>
         <span>{this.state.selected ? this.state.selected.symbol : null}</span>
         <img
           className={this.state.classNames.arrow}
           src={Arrow}
           alt="currency arrow"
         />
-        <ul className="dropdown">
+        <ul className={"dropdown " + this.state.classNames.dropdown}>
           {this.state.currencies
             ? this.state.currencies.map((currency) => (
-                <li key={currency.label}>
+                <li
+                  key={currency.label}
+                  onClick={() => this.setActiveCurrency(currency)}
+                >
                   {currency.symbol}&nbsp;{currency.label}
                 </li>
               ))

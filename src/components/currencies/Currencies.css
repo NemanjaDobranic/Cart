@@ -1,7 +1,7 @@
 .Currencies {
   display: inline-block;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex: auto;
   column-gap: 16px;
   cursor: pointer;
 }
@@ -17,17 +17,53 @@
   transition: transform var(--animation-duration) ease-in-out;
 }
 
-.Currencies img.opened {
+.Currencies img.rotate {
   transform: rotate(180deg);
   transition: transform var(--animation-duration) ease-in-out;
 }
 
 .Currencies .dropdown {
-  display: none;
+  overflow: hidden;
+  line-height: 0;
+  margin: 0;
+  position: absolute;
+  padding: 0;
+  opacity: 0;
+  list-style: none;
+  margin: 1rem 0;
+}
+
+.Currencies .dropdown.show {
+  line-height: 1.5;
+  opacity: 1;
+  transition: all var(--animation-duration) ease-in;
+}
+
+.Currencies .dropdown.hide {
+  overflow: hidden;
+  line-height: 0;
+  opacity: 0;
+  transition: all var(--animation-duration) ease-out;
 }
 
 @media only screen and (max-width: 768px) {
   .Currencies {
+    justify-content: center;
+    flex-wrap: wrap;
     column-gap: 8px;
+  }
+  .Currencies .dropdown {
+    position: relative;
+    text-align: center;
+    width: 100%;
+    margin: 0;
+  }
+
+  .Currencies .dropdown.show {
+    margin: 1rem 0;
+  }
+
+  .Currencies .dropdown.hide {
+    margin: 0;
   }
 }
