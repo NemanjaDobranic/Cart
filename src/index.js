@@ -8,10 +8,10 @@ import App from "./App";
 const client = new ApolloClient({ uri: "http://localhost:4000/" });
 
 ReactDOM.render(
-  <React.Fragment>
+  <React.StrictMode>
     <ApolloProvider client={client}>
       <App />
     </ApolloProvider>
-  </React.Fragment>,
+  </React.StrictMode>,
   document.getElementById("root")
 );
