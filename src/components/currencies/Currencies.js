@@ -24,6 +24,10 @@ class Currencies extends Component {
         ),
       });
     }
+
+    this.state.isOpened
+      ? document.addEventListener("mousedown", this.handleClickOutside)
+      : document.removeEventListener("mousedown", this.handleClickOutside);
   }
 
   openCurrencies = () => {
@@ -47,8 +51,28 @@ class Currencies extends Component {
   setActiveCurrency = (currency) => {
     this.setState({
       ...this.state,
+      isOpened: false,
+      classNames: {
+        arrow: "",
+        dropdown: "hide",
+      },
       selected: currency,
     });
+  };
+
+  handleClickOutside = (e) => {
+    const concernedElement = document.querySelector(".Currencies");
+
+    if (!concernedElement.contains(e.target)) {
+      this.setState({
+        ...this.state,
+        isOpened: false,
+        classNames: {
+          arrow: "",
+          dropdown: "hide",
+        },
+      });
+    }
   };
 
   render() {
