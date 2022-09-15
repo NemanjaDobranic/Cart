@@ -6,4 +6,13 @@ const selectCategory = (categoryName) => {
   };
 };
 
-export { selectCategory, selectCategoryType };
+const setCurrencyType = "SET_CURRENCY";
+
+const setCurrency = (currency) => {
+  return {
+    type: setCurrencyType,
+    currency: currency,
+  };
+};
+
+export { selectCategory, selectCategoryType, setCurrency, setCurrencyType };

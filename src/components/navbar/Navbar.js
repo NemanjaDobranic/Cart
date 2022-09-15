@@ -32,7 +32,9 @@ class Navbar extends Component {
         <ul className="categories">{this.displayCategories()}</ul>
         <img src={BrandIcon} className="logo" alt="a brand logo" />
         <div className="currency-cart">
-          <Currencies currencies={this.props.data.currencies} />
+          {!this.props.data.loading && (
+            <Currencies currencies={this.props.data.currencies} />
+          )}
           <img src={EmptyCart} alt="a cart icon" />
         </div>
       </div>

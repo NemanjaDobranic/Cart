@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import "./Currencies.css";
-
+import { connect } from "react-redux";
 import Arrow from "../../assets/icons/vector.svg";
+import { setCurrency } from "../../resources/actions/navbarActions";
 
 class Currencies extends Component {
   state = {
-    selected: null,
-    currencies: null,
     isOpened: false,
     classNames: {
       arrow: "",
@@ -14,17 +13,17 @@ class Currencies extends Component {
     },
   };
 
-  componentDidUpdate() {
-    if (!this.state.currencies && this.props.currencies) {
-      this.setState({
-        ...this.state,
-        currencies: this.props.currencies,
-        selected: this.props.currencies.find(
-          (currency) => currency.label.toLowerCase() === "usd"
-        ),
-      });
-    }
+  componentDidMount() {
+    if (this.props.currencies) {
+      const currency = this.props.currencies.find(
+        (currency) => currency.label.toLowerCase() === "usd"
+      );
 
+      this.props.setCurrency(currency);
+    }
+  }
+
+  componentDidUpdate() {
     this.state.isOpened
       ? document.addEventListener("mousedown", this.handleClickOutside)
       : document.removeEventListener("mousedown", this.handleClickOutside);
@@ -50,14 +49,14 @@ class Currencies extends Component {
 
   setActiveCurrency = (currency) => {
     this.setState({
-      ...this.state,
       isOpened: false,
       classNames: {
         arrow: "",
         dropdown: "hide",
       },
-      selected: currency,
     });
+
+    this.props.setCurrency(currency);
   };
 
   handleClickOutside = (e) => {
@@ -78,15 +77,15 @@ class Currencies extends Component {
   render() {
     return (
       <div className="Currencies" onClick={this.openCurrencies}>
-        <span>{this.state.selected ? this.state.selected.symbol : null}</span>
+        <span>{this.props.currency ? this.props.currency.symbol : null}</span>
         <img
           className={this.state.classNames.arrow}
           src={Arrow}
           alt="currency arrow"
         />
         <ul className={"dropdown " + this.state.classNames.dropdown}>
-          {this.state.currencies
-            ? this.state.currencies.map((currency) => (
+          {this.props.currencies
+            ? this.props.currencies.map((currency) => (
                 <li
                   key={currency.label}
                   onClick={() => this.setActiveCurrency(currency)}
@@ -101,4 +100,18 @@ class Currencies extends Component {
   }
 }
 
-export default Currencies;
+const mapStateToProps = (state) => {
+  return {
+    currency: state.currency,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setCurrency: (currency) => {
+      dispatch(setCurrency(currency));
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Currencies);

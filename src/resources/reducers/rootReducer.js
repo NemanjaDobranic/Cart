@@ -1,4 +1,4 @@
-import { selectCategoryType } from "../actions/navbarActions";
+import { selectCategoryType, setCurrencyType } from "../actions/navbarActions";
 
 const initState = {
   categoryName: null,
@@ -11,6 +11,14 @@ const rootReducer = (state = initState, action) => {
       categoryName: action.categoryName,
     };
   }
+
+  if (action.type === setCurrencyType) {
+    return {
+      ...state,
+      currency: action.currency,
+    };
+  }
+
   return state;
 };
 
