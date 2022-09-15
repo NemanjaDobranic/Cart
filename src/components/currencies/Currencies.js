@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./Currencies.css";
+import "./currencies.css";
 import { connect } from "react-redux";
 import Arrow from "../../assets/icons/vector.svg";
 import { setCurrency } from "../../resources/actions/navbarActions";

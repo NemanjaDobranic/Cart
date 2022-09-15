@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./productListing.css";
 import { connect } from "react-redux";
 
 class ProductListing extends Component {

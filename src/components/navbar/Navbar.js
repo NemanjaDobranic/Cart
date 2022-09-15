@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { graphql } from "react-apollo";
 import Currencies from "../currencies/Currencies";
-import "./Navbar.css";
+import "./navbar.css";
 import BrandIcon from "../../assets/icons/brand_icon.svg";
 import EmptyCart from "../../assets/icons/empty_cart.svg";
 import { getCategoriesAndCurrenciesQuery } from "../../resources/queries/queries";
