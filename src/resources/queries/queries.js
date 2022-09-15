@@ -12,4 +12,26 @@ const getCategoriesAndCurrenciesQuery = gql`
   }
 `;
 
-export { getCategoriesAndCurrenciesQuery };
+const getProductsQuery = gql`
+  query ($categoryName: String!) {
+    category(input: { title: $categoryName }) {
+      products {
+        id
+        name
+        brand
+        inStock
+        gallery
+        description
+        prices {
+          currency {
+            label
+            symbol
+          }
+          amount
+        }
+      }
+    }
+  }
+`;
+
+export { getCategoriesAndCurrenciesQuery, getProductsQuery };
