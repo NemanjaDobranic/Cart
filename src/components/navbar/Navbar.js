@@ -6,9 +6,15 @@ import BrandIcon from "../../assets/icons/brand_icon.svg";
 import EmptyCart from "../../assets/icons/empty_cart.svg";
 import { getCategoriesAndCurrenciesQuery } from "../../resources/queries/queries";
 import { connect } from "react-redux";
-import { selectCategory } from "../../resources/actions/navbarActions";
+import { setCategory } from "../../resources/actions/navbarActions";
 
 class Navbar extends Component {
+  componentDidUpdate() {
+    if (!this.props.categoryName && !this.props.data.loading) {
+      this.props.setCategory(this.props.data.categories[0].name);
+    }
+  }
+
   displayCategories = () =>
     !this.props.data.loading
       ? this.props.data.categories.map((category) => (
@@ -18,7 +24,7 @@ class Navbar extends Component {
               category.name === this.props.categoryName ? "active" : null
             }
             onClick={() => {
-              this.props.selectCategory(category.name);
+              this.props.setCategory(category.name);
             }}
           >
             {category.name}
@@ -50,8 +56,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    selectCategory: (categoryName) => {
-      dispatch(selectCategory(categoryName));
+    setCategory: (categoryName) => {
+      dispatch(setCategory(categoryName));
     },
   };
 };
