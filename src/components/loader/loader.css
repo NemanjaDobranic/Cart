@@ -1,0 +1,26 @@
+.Loader {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  display: inline-block;
+  border-top: 3px solid var(--green);
+  border-right: 3px solid transparent;
+  box-sizing: border-box;
+  animation: rotation var(--loader-duration) linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .Loader {
+    width: 3rem;
+    height: 3rem;
+  }
+}

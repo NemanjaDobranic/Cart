@@ -2,6 +2,7 @@
   --green: #5ece7b;
   --black: #1d1f22;
   --animation-duration: 250ms;
+  --loader-duration: 1s;
 }
 
 body {

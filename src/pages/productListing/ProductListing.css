@@ -1,0 +1,75 @@
+.ProductListing {
+  margin: 80px 100px 190px 100px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 100px;
+}
+
+.ProductListing h1 {
+  font-size: 42px;
+  font-weight: 400;
+  text-transform: capitalize;
+  margin: 0;
+}
+
+.ProductListing .product-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 40px;
+  row-gap: 100px;
+}
+
+.ProductListing .product-grid > div {
+  animation: fadeIn var(--animation-duration) ease-out;
+  padding: 1rem;
+  box-shadow: 0 0 0 0 #f8f8f8;
+}
+
+.ProductListing .product-grid > div:hover {
+  cursor: pointer;
+  box-shadow: 0 0 0.5rem 0.5rem #f8f8f8;
+  transition: box-shadow var(--animation-duration) ease-in-out;
+}
+
+@keyframes fadeIn {
+  0% {
+    transform: scale(0.8, 0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1, 1);
+    opacity: 1;
+  }
+}
+
+.ProductListing .product-grid > div > img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.center-loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@media only screen and (max-width: 1024px) {
+  .ProductListing h1 {
+    font-size: 30px;
+  }
+
+  .ProductListing .product-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .ProductListing .product-grid {
+    justify-content: center;
+  }
+
+  .ProductListing .product-grid {
+    grid-template-columns: 1fr;
+  }
+}

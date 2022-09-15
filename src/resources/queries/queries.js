@@ -15,6 +15,7 @@ const getCategoriesAndCurrenciesQuery = gql`
 const getProductsQuery = gql`
   query ($categoryName: String!) {
     category(input: { title: $categoryName }) {
+      name
       products {
         id
         name

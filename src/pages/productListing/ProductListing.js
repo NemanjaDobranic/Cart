@@ -4,10 +4,51 @@ import { connect } from "react-redux";
 import { graphql } from "react-apollo";
 import { getProductsQuery } from "../../resources/queries/queries";
 import { compose } from "redux";
+import Loader from "../../components/loader/Loader";
 
 class ProductListing extends Component {
+  state = {
+    categoryName: null,
+    products: null,
+  };
+
+  componentDidUpdate() {
+    const {
+      data: { category },
+    } = this.props;
+
+    if (category && category.name !== this.state.categoryName) {
+      this.setState({
+        categoryName: category.name,
+        products: category.products,
+      });
+    }
+  }
+
+  displayProducts() {
+    const products = this.state.products;
+    return products ? (
+      <div className="product-grid">
+        {products.map((product) => (
+          <div key={product.id}>
+            <img src={product.gallery[0]} alt={product.name} />
+          </div>
+        ))}
+      </div>
+    ) : null;
+  }
+
   render() {
-    return <div>Hello</div>;
+    if (!this.props.data || this.props.data.loading) {
+      return <Loader className="center-loader" />;
+    }
+
+    return (
+      <div className="ProductListing">
+        <h1>{this.state.categoryName}</h1>
+        {this.displayProducts()}
+      </div>
+    );
   }
 }
 
