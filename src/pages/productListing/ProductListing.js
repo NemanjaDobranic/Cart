@@ -30,12 +30,27 @@ class ProductListing extends Component {
     return products ? (
       <div className="product-grid">
         {products.map((product) => (
-          <div key={product.id}>
+          <div
+            key={product.id}
+            className={!product.inStock ? "out-of-stock" : null}
+          >
             <img src={product.gallery[0]} alt={product.name} />
+            <ul>
+              <li>{product.name}</li>
+              <li>{this.getPrice(product.prices)}</li>
+            </ul>
           </div>
         ))}
       </div>
     ) : null;
+  }
+
+  getPrice(prices) {
+    const price = prices.find(
+      (price) =>
+        JSON.stringify(price.currency) === JSON.stringify(this.props.currency)
+    );
+    return `${price.currency.symbol} ${price.amount}`;
   }
 
   render() {
@@ -55,6 +70,7 @@ class ProductListing extends Component {
 const mapStateToProps = (state) => {
   return {
     categoryName: state.categoryName,
+    currency: state.currency,
   };
 };
 
