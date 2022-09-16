@@ -20,6 +20,7 @@
 }
 
 .ProductListing .product-grid > div {
+  position: relative;
   height: 25vw;
   display: flex;
   flex-direction: column;
@@ -45,7 +46,6 @@
 }
 
 .out-of-stock {
-  position: relative;
   z-index: -1;
   opacity: 0.4;
   cursor: pointer;
@@ -75,7 +75,7 @@
   }
 }
 
-.ProductListing .product-grid > div > img {
+.ProductListing .product-grid > div > img:first-child {
   width: 100%;
   height: 80%;
   object-fit: fill;
@@ -115,6 +115,25 @@
   transform: translate(-50%, -50%);
 }
 
+.circle-icon {
+  width: 52px;
+  height: 52px;
+
+  position: absolute;
+  top: calc(80% - 26px);
+  right: 31px;
+  transform: translateY(-20%);
+
+  opacity: 0;
+  transform: scale(0, 0);
+  transition: all var(--animation-duration) ease-in-out;
+}
+
+.ProductListing .product-grid > div:hover .circle-icon {
+  opacity: 1;
+  transform: scale(1, 1);
+}
+
 @media only screen and (max-width: 1024px) {
   .ProductListing h1 {
     font-size: 30px;
@@ -140,6 +159,20 @@
 
   .ProductListing .product-grid > div > ul > li {
     font-size: 14px;
+  }
+
+  .circle-icon {
+    width: 40px;
+    height: 40px;
+
+    position: absolute;
+    top: calc(80% - 20px);
+    right: 24px;
+    transform: translateY(-20%);
+
+    opacity: 0;
+    transform: scale(0, 0);
+    transition: all var(--animation-duration) ease-in-out;
   }
 }
 

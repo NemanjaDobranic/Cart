@@ -5,6 +5,7 @@ import { graphql } from "react-apollo";
 import { getProductsQuery } from "../../resources/queries/queries";
 import { compose } from "redux";
 import Loader from "../../components/loader/Loader";
+import CircleIcon from "../../assets/icons/circle_icon.svg";
 
 class ProductListing extends Component {
   state = {
@@ -35,6 +36,9 @@ class ProductListing extends Component {
             className={!product.inStock ? "out-of-stock" : null}
           >
             <img src={product.gallery[0]} alt={product.name} />
+            {product.inStock ? (
+              <img src={CircleIcon} alt="circle icon" className="circle-icon" />
+            ) : null}
             <ul>
               <li>{product.name}</li>
               <li>{this.getPrice(product.prices)}</li>
