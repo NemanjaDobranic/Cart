@@ -18,7 +18,7 @@ class ProductDescription extends Component {
     if (!this.state.product)
       this.setState({
         product,
-        activeImage: { src: product.gallery[0], shake: false },
+        activeImage: { src: product.gallery[0], fadeIn: false, fadeOut: false },
       });
   }
 
@@ -37,21 +37,39 @@ class ProductDescription extends Component {
   }
 
   setActiveImage = (image) => {
+    const { src } = this.state.activeImage;
+    const timeTrigger = 250;
+    if (src === image) return;
+
     this.setState({
       ...this.state,
-      activeImage: {
-        src: image,
-        shake: true,
-      },
+      activeImage: { ...this.state.activeImage, fadeOut: true, fadeIn: false },
     });
 
     setTimeout(
       () =>
         this.setState({
           ...this.state,
-          activeImage: { ...this.state.activeImage, shake: false },
+          activeImage: {
+            src: image,
+            fadeIn: true,
+            fadeOut: false,
+          },
         }),
-      2000
+      timeTrigger
+    );
+
+    setTimeout(
+      () =>
+        this.setState({
+          ...this.state,
+          activeImage: {
+            ...this.state.activeImage,
+            fadeIn: false,
+            fadeOut: false,
+          },
+        }),
+      2 * timeTrigger
     );
   };
 
@@ -72,7 +90,13 @@ class ProductDescription extends Component {
         </div>
         <img
           id="active-image"
-          className={this.state.activeImage.shake ? "shake" : null}
+          className={
+            this.state.activeImage.fadeIn
+              ? "fadeIn"
+              : null + this.state.activeImage.fadeOut
+              ? "fadeOut"
+              : null
+          }
           src={this.state.activeImage.src}
           alt=""
         />
