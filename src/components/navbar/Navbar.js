@@ -7,6 +7,7 @@ import EmptyCart from "../../assets/icons/empty_cart.svg";
 import { getCategoriesAndCurrenciesQuery } from "../../resources/queries/queries";
 import { connect } from "react-redux";
 import { setCategory } from "../../resources/actions/navbarActions";
+import { Link } from "react-router-dom";
 
 class Navbar extends Component {
   componentDidUpdate() {
@@ -18,17 +19,18 @@ class Navbar extends Component {
   displayCategories = () =>
     !this.props.data.loading
       ? this.props.data.categories.map((category) => (
-          <li
-            key={category.name}
-            className={
-              category.name === this.props.categoryName ? "active" : null
-            }
-            onClick={() => {
-              this.props.setCategory(category.name);
-            }}
-          >
-            {category.name}
-          </li>
+          <Link to="/" key={category.name}>
+            <li
+              className={
+                category.name === this.props.categoryName ? "active" : null
+              }
+              onClick={() => {
+                this.props.setCategory(category.name);
+              }}
+            >
+              {category.name}
+            </li>
+          </Link>
         ))
       : null;
 

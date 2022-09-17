@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { graphql } from "react-apollo";
 import { getProductsQuery } from "../../resources/queries/queries";
 import { compose } from "redux";
+import { Link } from "react-router-dom";
 import Loader from "../../components/loader/Loader";
 import CircleIcon from "../../assets/icons/circle_icon.svg";
 
@@ -31,8 +32,9 @@ class ProductListing extends Component {
     return products ? (
       <div className="product-grid">
         {products.map((product) => (
-          <div
+          <Link
             key={product.id}
+            to={`product-decription/${product.id}`}
             className={!product.inStock ? "out-of-stock" : null}
           >
             <img src={product.gallery[0]} alt={product.name} />
@@ -43,7 +45,7 @@ class ProductListing extends Component {
               <li>{product.name}</li>
               <li>{this.getPrice(product.prices)}</li>
             </ul>
-          </div>
+          </Link>
         ))}
       </div>
     ) : null;
@@ -58,7 +60,8 @@ class ProductListing extends Component {
   }
 
   render() {
-    if (!this.props.data || this.props.data.loading) {
+    const { data } = this.props;
+    if (!data || data.loading) {
       return <Loader className="center-loader" />;
     }
 
@@ -84,7 +87,7 @@ export default compose(
     // name: "getProductsQuery",
     skip: (props) => !props.categoryName,
     options: (props) => ({
-      fetchPolicy: "network-only",
+      fetchPolicy: "cache-and-network",
       variables: {
         categoryName: props.categoryName,
       },

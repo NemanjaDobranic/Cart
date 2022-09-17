@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Route, BrowserRouter, Switch } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
 import ProductListing from "./pages/productListing/ProductListing";
+import ProductDescription from "./pages/productDescription/ProductDescription";
 
 class App extends Component {
   render() {
@@ -10,7 +11,11 @@ class App extends Component {
         <div className="App">
           <Navbar />
           <Switch>
-            <Route path="/" component={ProductListing} />
+            <Route exact path="/" component={ProductListing} />
+            <Route
+              path="/product-decription/:id"
+              component={ProductDescription}
+            />
           </Switch>
         </div>
       </BrowserRouter>
