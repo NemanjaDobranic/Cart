@@ -1,3 +1,53 @@
 .ProductDescription {
-  color: red;
+  position: relative;
+  margin: 80px 100px 200px 100px;
+  display: grid;
+  grid-template-columns: 80px 60% max-content;
+}
+
+.ProductDescription img {
+  max-width: 100%;
+  max-height: 100%;
+  height: 80px;
+}
+
+.product-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.product-gallery img:hover {
+  cursor: pointer;
+  transform: scale(1.1, 1.1);
+  transition: transform var(--animation-duartion) linear;
+}
+
+.product-gallery img:not(:hover) {
+  transform: scale(1, 1);
+  transition: transform var(--animation-duartion) linear;
+}
+
+.ProductDescription #active-image {
+  height: max-content;
+  box-sizing: border-box;
+  padding: 0 100px 0 42px;
+  z-index: -1;
+}
+
+.ProductDescription #active-image.shake {
+  animation: shake 1s infinite;
+}
+
+@keyframes shake {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

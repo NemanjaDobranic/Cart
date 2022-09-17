@@ -7,7 +7,20 @@ import { getProductQuery } from "../../resources/queries/queries";
 class ProductDescription extends Component {
   state = {
     product: null,
+    activeImage: null,
   };
+
+  componentDidUpdate() {
+    const {
+      data: { product },
+    } = this.props;
+
+    if (!this.state.product)
+      this.setState({
+        product,
+        activeImage: { src: product.gallery[0], shake: false },
+      });
+  }
 
   shouldComponentUpdate(nextProps) {
     const {
@@ -20,19 +33,52 @@ class ProductDescription extends Component {
       return false;
     }
 
-    if (this.state.product) {
-      return false;
-    }
-
-    this.setState({
-      ...this.state,
-      product,
-    });
     return true;
   }
 
+  setActiveImage = (image) => {
+    this.setState({
+      ...this.state,
+      activeImage: {
+        src: image,
+        shake: true,
+      },
+    });
+
+    setTimeout(
+      () =>
+        this.setState({
+          ...this.state,
+          activeImage: { ...this.state.activeImage, shake: false },
+        }),
+      2000
+    );
+  };
+
   displayProduct(product) {
-    return <div className="ProductDescription">{product.name}</div>;
+    return (
+      <div className="ProductDescription">
+        <div className="product-gallery">
+          {product.gallery.map((image, index) => (
+            <img
+              key={index}
+              src={image}
+              alt={image}
+              onClick={() => {
+                this.setActiveImage(image);
+              }}
+            />
+          ))}
+        </div>
+        <img
+          id="active-image"
+          className={this.state.activeImage.shake ? "shake" : null}
+          src={this.state.activeImage.src}
+          alt=""
+        />
+        <div>Fin i sladak</div>
+      </div>
+    );
   }
 
   render() {
