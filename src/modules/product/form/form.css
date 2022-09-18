@@ -41,7 +41,16 @@
   gap: 12px;
 }
 
-.Form .text {
+.Form .item {
+  position: relative;
+}
+
+.Form input[type="checkbox"] {
+  position: absolute;
+  z-index: -1;
+}
+
+.Form .item .text {
   padding: 14px 28px;
   border: 1px solid var(--black);
   color: var(--black);
@@ -50,29 +59,66 @@
   font-weight: 400;
 }
 
-.Form .attribute span.text:hover {
+input[type="checkbox"]:focus + label.text {
+  background-color: var(--black);
+  color: white;
+  transition: background-color var(--animation-duration) linear;
+}
+
+.Form .item .text:hover {
   cursor: pointer;
   background-color: var(--black);
   color: white;
   transition: background-color var(--animation-duration) linear;
 }
 
+input:focus {
+  background-color: var(--black);
+  color: white;
+  transition: background-color var(--animation-duration) linear;
+}
+
 .Form .swatch {
-  cursor: pointer;
-  padding: 2px;
-  border: 1px solid transparent;
-}
-
-.Form span.swatch:hover {
-  border: 1px solid var(--green);
-  transition: border var(--animation-duration) linear;
-}
-
-.Form .swatch > div {
   height: 32px;
   width: 32px;
+  color: transparent;
+  position: relative;
+}
+
+.Form .swatch:hover > div,
+input[type="checkbox"]:focus + .swatch > div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  box-sizing: border-box;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  border: 1px solid var(--green);
 }
 
 .Form h3 {
   text-transform: uppercase;
+}
+
+.Form #price {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 18px;
+}
+
+.Form button {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19.2px;
+  color: white;
+  background-color: var(--green);
+  border: none;
+  display: block;
+  padding: 1rem 0;
+  margin: 40px 0;
+  width: 100%;
+  cursor: pointer;
 }
