@@ -57,6 +57,12 @@
   background-color: white;
   font-size: 18px;
   font-weight: 400;
+  display: block;
+}
+
+.Form .item .text.active {
+  background-color: var(--black);
+  color: white;
 }
 
 input[type="checkbox"]:focus + label.text {
@@ -88,10 +94,20 @@ input:focus {
 .Form .swatch:hover > div,
 input[type="checkbox"]:focus + .swatch > div {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: -2px;
+  left: -2px;
   cursor: pointer;
+  box-sizing: border-box;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  border: 1px solid var(--green);
+  transition: all var(--animation-duration) linear;
+}
+
+.Form .swatch .active {
+  position: absolute;
+  top: -2px;
+  left: -2px;
   box-sizing: border-box;
   width: calc(100% + 4px);
   height: calc(100% + 4px);
@@ -121,4 +137,26 @@ input[type="checkbox"]:focus + .swatch > div {
   margin: 40px 0;
   width: 100%;
   cursor: pointer;
+}
+
+.Form .invalid-field {
+  margin: 8px 0;
+  color: var(--red);
+  width: fit-content;
+  animation: openModal var(--animation-duration) ease-out forwards;
+}
+
+.Form button:hover,
+.Form button:focus {
+  transform: scale(1.01, 1.01);
+  filter: contrast(1.1);
+}
+
+@keyframes openModal {
+  0% {
+  transform: scale(0,0);
+  }
+  100% {
+    transform: scale(1,1);
+  }
 }

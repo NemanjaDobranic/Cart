@@ -4,20 +4,73 @@ import { connect } from "react-redux";
 import { getPrice } from "../../../resources/commonFunctions/commonFunctions";
 
 class Form extends Component {
-  addToCart = (e) => {
-    e.preventDefault();
-    console.log("hello");
+  state = {
+    attributes: [],
+    touched: false,
   };
 
-  handleChange = (attribute, item) => {
-    console.log(attribute);
-    console.log(item);
+  componentDidMount() {
+    const {
+      product: { attributes },
+    } = this.props;
+
+    const state = attributes.map((attribute) => {
+      return {
+        id: attribute.id,
+        itemId: null,
+        valid: false,
+      };
+    });
+
+    this.setState({ attributes: state, touched: false });
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const { attributes } = this.state;
+    this.setState({ ...this.state, touched: true });
+    const isFormValid = attributes.every((attr) => attr.valid);
+
+    if (isFormValid) {
+      console.log(attributes);
+    }
+  };
+
+  handleClick = (attribute, item) => {
+    const attributes = this.state.attributes;
+
+    const newAttributes = attributes.map((attr) => {
+      if (attr.id === attribute.id) {
+        attr.itemId = item.id;
+        attr.valid = true;
+      }
+
+      return attr;
+    });
+
+    this.setState({
+      ...this.state,
+      attributes: newAttributes,
+    });
+  };
+
+  isChoosenItem = (attributeId, itemId) =>
+    this.state.attributes.find(
+      (attr) => attr.id === attributeId && attr.itemId === itemId
+    );
+
+  isValidField = (attributeId) => {
+    const attribute = this.state.attributes.find(
+      (attr) => attr.id === attributeId
+    );
+
+    return attribute.valid;
   };
 
   render() {
     const { product, currency } = this.props;
     return (
-      <form className="Form" onSubmit={this.addToCart}>
+      <form className="Form" onSubmit={this.handleSubmit}>
         <h1>{product.brand}</h1>
         <h1>{product.name}</h1>
         <ul className="attributes">
@@ -29,12 +82,16 @@ class Form extends Component {
                   <span key={item.id} className="item">
                     <input
                       type="checkbox"
-                      onClick={() => this.handleChange(attribute, item)}
+                      onClick={() => this.handleClick(attribute, item)}
                     />
                     {attribute.type !== "swatch" ? (
                       <label
-                        className="text"
-                        onClick={() => this.handleChange(attribute, item)}
+                        className={
+                          this.isChoosenItem(attribute.id, item.id)
+                            ? "text active"
+                            : "text"
+                        }
+                        onClick={() => this.handleClick(attribute, item)}
                       >
                         {item.displayValue}
                       </label>
@@ -44,20 +101,32 @@ class Form extends Component {
                         style={{
                           backgroundColor: item.value,
                         }}
-                        onClick={() => this.handleChange(attribute, item)}
+                        onClick={() => this.handleClick(attribute, item)}
                       >
-                        <div></div>
+                        <div
+                          className={
+                            this.isChoosenItem(attribute.id, item.id)
+                              ? "active"
+                              : null
+                          }
+                        ></div>
                       </div>
                     )}
                   </span>
                 ))}
               </div>
+              {this.state.touched && !this.isValidField(attribute.id) && (
+                <div className="invalid-field">
+                  {attribute.name} is required!
+                </div>
+              )}
             </li>
           ))}
         </ul>
         <h3>price:</h3>
         <span id="price">{getPrice(product.prices, currency)}</span>
         <button type="submit">add to cart</button>
+        <div dangerouslySetInnerHTML={{ __html: product.description }}></div>
       </form>
     );
   }

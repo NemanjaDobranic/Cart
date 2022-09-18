@@ -1,6 +1,7 @@
 :root {
   --green: #5ece7b;
   --black: #1d1f22;
+  --red:#FF6466;
   --animation-duration: 250ms;
   --loader-duration: 1s;
 }

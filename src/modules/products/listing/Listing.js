@@ -35,7 +35,7 @@ class Listing extends Component {
         {products.map((product) => (
           <Link
             key={product.id}
-            to={`product-decription/${product.id}`}
+            to={`product/${product.id}`}
             className={!product.inStock ? "out-of-stock" : null}
           >
             <img src={product.gallery[0]} alt={product.name} />
