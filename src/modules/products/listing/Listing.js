@@ -1,14 +1,15 @@
 import React, { Component } from "react";
-import "./productListing.css";
+import "./listing.css";
 import { connect } from "react-redux";
 import { graphql } from "react-apollo";
-import { getProductsQuery } from "../../resources/queries/queries";
+import { getProductsQuery } from "../../../resources/queries/queries";
 import { compose } from "redux";
 import { Link } from "react-router-dom";
-import Loader from "../../components/loader/Loader";
-import CircleIcon from "../../assets/icons/circle_icon.svg";
+import { getPrice } from "../../../resources/commonFunctions/commonFunctions";
+import Loader from "../../../components/loader/Loader";
+import CircleIcon from "../../../assets/icons/circle_icon.svg";
 
-class ProductListing extends Component {
+class Listing extends Component {
   state = {
     categoryName: null,
     products: null,
@@ -43,20 +44,12 @@ class ProductListing extends Component {
             ) : null}
             <ul>
               <li>{product.name}</li>
-              <li>{this.getPrice(product.prices)}</li>
+              <li>{getPrice(product.prices, this.props.currency)}</li>
             </ul>
           </Link>
         ))}
       </div>
     ) : null;
-  }
-
-  getPrice(prices) {
-    const price = prices.find(
-      (price) =>
-        JSON.stringify(price.currency) === JSON.stringify(this.props.currency)
-    );
-    return `${price.currency.symbol} ${price.amount}`;
   }
 
   render() {
@@ -66,7 +59,7 @@ class ProductListing extends Component {
     }
 
     return (
-      <div className="ProductListing">
+      <div className="Listing">
         <h1>{this.state.categoryName}</h1>
         {this.displayProducts()}
       </div>
@@ -93,4 +86,4 @@ export default compose(
       },
     }),
   })
-)(ProductListing);
+)(Listing);

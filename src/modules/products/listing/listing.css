@@ -1,25 +1,25 @@
-.ProductListing {
+.Listing {
   margin: 80px 100px 190px 100px;
   display: flex;
   flex-direction: column;
   row-gap: 100px;
 }
 
-.ProductListing h1 {
+.Listing h1 {
   font-size: 42px;
   font-weight: 400;
   text-transform: capitalize;
   margin: 0;
 }
 
-.ProductListing .product-grid {
+.Listing .product-grid {
   display: grid;
   grid-template-columns: repeat(3, 28%);
   column-gap: 8%;
   row-gap: 3rem;
 }
 
-.ProductListing .product-grid > a {
+.Listing .product-grid > a {
   display: block;
   text-decoration: none;
   color: inherit;
@@ -44,7 +44,7 @@
   }
 }
 
-.ProductListing .product-grid > a.out-of-stock {
+.Listing .product-grid > a.out-of-stock {
   animation: showOutOfStock var(--animation-duration) ease-out;
 }
 
@@ -78,35 +78,35 @@
   }
 }
 
-.ProductListing .product-grid > a > img:first-child {
+.Listing .product-grid > a > img:first-child {
   width: 100%;
   height: 80%;
   object-fit: fill;
 }
 
-.ProductListing .product-grid > a > ul {
+.Listing .product-grid > a > ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
 
-.ProductListing .product-grid > a > ul > li {
+.Listing .product-grid > a > ul > li {
   font-size: 18px;
   font-weight: 300;
   line-height: 28.8px;
 }
 
-.ProductListing .product-grid > a > ul > li:last-child {
+.Listing .product-grid > a > ul > li:last-child {
   font-weight: 500;
 }
 
-.ProductListing .product-grid > a:hover {
+.Listing .product-grid > a:hover {
   cursor: pointer;
   box-shadow: 0 0 0.5rem 0.5rem #f8f8f8;
   transition: box-shadow var(--animation-duration) ease-in-out;
 }
 
-.ProductListing .product-grid > a > img {
+.Listing .product-grid > a > img {
   max-width: 100%;
   max-height: 100%;
 }
@@ -132,27 +132,27 @@
   transition: all var(--animation-duration) ease-in-out;
 }
 
-.ProductListing .product-grid > a:hover .circle-icon {
+.Listing .product-grid > a:hover .circle-icon {
   opacity: 1;
   transform: scale(1, 1);
 }
 
 @media only screen and (max-width: 1024px) {
-  .ProductListing h1 {
+  .Listing h1 {
     font-size: 30px;
   }
 
-  .ProductListing {
+  .Listing {
     row-gap: 75px;
   }
 
-  .ProductListing .product-grid {
+  .Listing .product-grid {
     display: grid;
     grid-template-columns: repeat(2, 45%);
     column-gap: 10%;
   }
 
-  .ProductListing .product-grid > a {
+  .Listing .product-grid > a {
     height: 40vw;
   }
 
@@ -160,7 +160,7 @@
     font-size: 17px;
   }
 
-  .ProductListing .product-grid > a > ul > li {
+  .Listing .product-grid > a > ul > li {
     font-size: 14px;
   }
 
@@ -180,20 +180,20 @@
 }
 
 @media only screen and (max-width: 768px) {
-  .ProductListing h1 {
+  .Listing h1 {
     text-align: center;
   }
 
-  .ProductListing .product-grid {
+  .Listing .product-grid {
     justify-content: center;
   }
 
-  .ProductListing .product-grid {
+  .Listing .product-grid {
     display: grid;
     grid-template-columns: 90%;
   }
 
-  .ProductListing .product-grid > a {
+  .Listing .product-grid > a {
     height: 50vw;
   }
 }

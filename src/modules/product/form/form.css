@@ -1,0 +1,78 @@
+.Form > h1 {
+  font-size: 27px;
+  line-height: 27px;
+  color: var(--black);
+}
+
+.Form > h1:first-child {
+  font-weight: 600;
+}
+
+.Form > h1:last-child {
+  font-weight: 400;
+}
+
+.Form .attributes {
+  list-style-type: none;
+  margin: 42px 0;
+  padding: 0;
+}
+
+.Form .attributes li {
+  margin-bottom: 24px;
+}
+
+.Form .attributes li:last-child {
+  margin: 0;
+}
+
+.Form .attributes li > h3 {
+  font-size: 18px;
+
+  line-height: 18px;
+  font-weight: 700;
+  color: var(--black);
+}
+
+.attribute {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.Form .text {
+  padding: 14px 28px;
+  border: 1px solid var(--black);
+  color: var(--black);
+  background-color: white;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.Form .attribute span.text:hover {
+  cursor: pointer;
+  background-color: var(--black);
+  color: white;
+  transition: background-color var(--animation-duration) linear;
+}
+
+.Form .swatch {
+  cursor: pointer;
+  padding: 2px;
+  border: 1px solid transparent;
+}
+
+.Form span.swatch:hover {
+  border: 1px solid var(--green);
+  transition: border var(--animation-duration) linear;
+}
+
+.Form .swatch > div {
+  height: 32px;
+  width: 32px;
+}
+
+.Form h3 {
+  text-transform: uppercase;
+}

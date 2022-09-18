@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Route, BrowserRouter, Switch } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
-import ProductListing from "./pages/productListing/ProductListing";
-import ProductDescription from "./pages/productDescription/ProductDescription";
+import Listing from "./modules/products/listing/Listing";
+import Description from "./modules/product/description/Description";
 
 class App extends Component {
   render() {
@@ -11,11 +11,8 @@ class App extends Component {
         <div className="App">
           <Navbar />
           <Switch>
-            <Route exact path="/" component={ProductListing} />
-            <Route
-              path="/product-decription/:id"
-              component={ProductDescription}
-            />
+            <Route exact path="/" component={Listing} />
+            <Route path="/product-decription/:id" component={Description} />
           </Switch>
         </div>
       </BrowserRouter>

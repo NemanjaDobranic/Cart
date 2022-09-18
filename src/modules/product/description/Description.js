@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import "./productDescription.css";
-import Loader from "../../components/loader/Loader";
+import "./description.css";
+import Loader from "../../../components/loader/Loader";
 import { graphql } from "react-apollo";
-import { getProductQuery } from "../../resources/queries/queries";
+import { getProductQuery } from "../../../resources/queries/queries";
+import Form from "../form/Form";
 
-class ProductDescription extends Component {
+class Description extends Component {
   state = {
     product: null,
     activeImage: null,
@@ -75,41 +76,7 @@ class ProductDescription extends Component {
 
   displayProductDescription(product) {
     return (
-      <div className="product-description">
-        <h1>{product.brand}</h1>
-        <h1>{product.name}</h1>
-        <ul className="attributes">
-          {product.attributes.map((attribute) => (
-            <li key={attribute.name}>
-              <h3>{attribute.name}:</h3>
-              <div className="attribute">
-                {attribute.type !== "swatch"
-                  ? attribute.items.map((item) => (
-                      <span key={item.id} className="text">
-                        {item.displayValue}
-                      </span>
-                    ))
-                  : attribute.items.map((item) => (
-                      <span className="swatch" key={item.id}>
-                        <div
-                          style={{
-                            backgroundColor: item.value,
-                            color: "transparent",
-                          }}
-                        ></div>
-                      </span>
-                    ))}
-              </div>
-            </li>
-          ))}
-        </ul>
-      </div>
-    );
-  }
-
-  displayProductPage(product) {
-    return (
-      <div className="Product">
+      <div className="Description">
         <div className="product-gallery">
           {product.gallery.map((image, index) => (
             <img
@@ -134,7 +101,7 @@ class ProductDescription extends Component {
           src={this.state.activeImage.src}
           alt=""
         />
-        {this.displayProductDescription(product)}
+        <Form product={product} />
       </div>
     );
   }
@@ -146,7 +113,7 @@ class ProductDescription extends Component {
     }
 
     const { product } = this.state;
-    return product ? this.displayProductPage(product) : null;
+    return product ? this.displayProductDescription(product) : null;
   }
 }
 
@@ -158,4 +125,4 @@ export default graphql(getProductQuery, {
       id: props.match.params.id,
     },
   }),
-})(ProductDescription);
+})(Description);
