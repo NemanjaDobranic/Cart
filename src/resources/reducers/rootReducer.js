@@ -1,4 +1,5 @@
 import { setCategoryType, setCurrencyType } from "../actions/navbarActions";
+import { addProductType } from "../actions/cartActions";
 
 const initState = {
   categoryName: null,

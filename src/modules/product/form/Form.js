@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./form.css";
 import { connect } from "react-redux";
 import { getPrice } from "../../../resources/commonFunctions/commonFunctions";
+import { addProduct } from "../../../resources/actions/cartActions";
 
 class Form extends Component {
   state = {
@@ -32,7 +33,16 @@ class Form extends Component {
     const isFormValid = attributes.every((attr) => attr.valid);
 
     if (isFormValid) {
-      console.log(attributes);
+      const { product } = this.props;
+
+      const cartAttrs = attributes.map((a1) => {
+        const attribute = product.attributes.find((a2) => a1.id === a2.id);
+        const selectedItem = attribute.items.find((i1) => i1.id === a1.itemId);
+        return { ...attribute, selectedItem };
+      });
+
+      const cartProduct = { ...product, attributes: cartAttrs };
+      this.props.addProduct(cartProduct);
     }
   };
 
@@ -138,4 +148,12 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(Form);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addProduct: (product) => {
+      dispatch(addProduct(product));
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Form);
