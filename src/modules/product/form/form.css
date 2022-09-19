@@ -154,9 +154,37 @@ input[type="checkbox"]:focus + .swatch > div {
 
 @keyframes openModal {
   0% {
-  transform: scale(0,0);
+    transform: scale(0, 0);
   }
   100% {
-    transform: scale(1,1);
+    transform: scale(1, 1);
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .Form > h1 {
+    font-size: 19px;
+    line-height: 19px;
+  }
+
+  .Form .attributes li > h3,
+  .Form h3 {
+    font-size: 12.5px;
+    line-height: 12.5px;
+  }
+
+  .Form .item .text {
+    padding: 10px 20px;
+    font-size: 12.5px;
+  }
+
+  .Form #price {
+    font-size: 17px;
+    line-height: 12.5px;
+  }
+
+  .Form button {
+    font-size: 12px;
+    line-height: 13px;
   }
 }
