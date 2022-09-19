@@ -102,7 +102,7 @@ class Currencies extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    currency: state.currency,
+    currency: state.navbar.currency,
   };
 };
 

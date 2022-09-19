@@ -52,7 +52,7 @@ class Navbar extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    categoryName: state.categoryName,
+    categoryName: state.navbar.categoryName,
   };
 };
 

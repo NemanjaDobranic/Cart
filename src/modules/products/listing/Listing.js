@@ -69,8 +69,8 @@ class Listing extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    categoryName: state.categoryName,
-    currency: state.currency,
+    categoryName: state.navbar.categoryName,
+    currency: state.navbar.currency,
   };
 };
 

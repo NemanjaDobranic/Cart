@@ -1,26 +1,10 @@
-import { setCategoryType, setCurrencyType } from "../actions/navbarActions";
-import { addProductType } from "../actions/cartActions";
+import { combineReducers } from "redux";
+import navbarReducer from "./navbarReducer";
+import cartReducer from "./cartReducer";
 
-const initState = {
-  categoryName: null,
-  currency: null,
-};
-const rootReducer = (state = initState, action) => {
-  if (action.type === setCategoryType) {
-    return {
-      ...state,
-      categoryName: action.categoryName,
-    };
-  }
-
-  if (action.type === setCurrencyType) {
-    return {
-      ...state,
-      currency: action.currency,
-    };
-  }
-
-  return state;
-};
+const rootReducer = combineReducers({
+  navbar: navbarReducer,
+  cart: cartReducer,
+});
 
 export default rootReducer;
