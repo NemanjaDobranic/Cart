@@ -26,7 +26,7 @@ const cartReducer = (state = initState, action) => {
     }
     state.quantity++;
 
-    return state;
+    return { ...state };
   }
 
   return state;

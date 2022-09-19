@@ -59,6 +59,24 @@
   align-self: center;
 }
 
+.Navbar .currency-cart div:last-child {
+  position: relative;
+}
+
+.Navbar .currency-cart div:last-child > div {
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  border-radius: 60px;
+  min-width: 14px;
+  min-height: 14px;
+  padding: 3px;
+  font-size: 12px;
+  background-color: var(--black);
+  color: white;
+  text-align: center;
+}
+
 @media only screen and (max-width: 1024px) {
   .Navbar .categories li {
     font-size: 0.75rem;
@@ -107,5 +125,14 @@
     display: grid;
     row-gap: 1rem;
     justify-items: center;
+  }
+
+  .Navbar .currency-cart div:last-child > div {
+    top: -6px;
+    right: -6px;
+    min-width: 10px;
+    min-height: 10px;
+    padding: 2px;
+    font-size: 8.5px;
   }
 }

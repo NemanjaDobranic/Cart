@@ -43,7 +43,12 @@ class Navbar extends Component {
           {!this.props.data.loading && (
             <Currencies currencies={this.props.data.currencies} />
           )}
-          <img src={EmptyCart} alt="a cart icon" />
+          <div>
+            <img src={EmptyCart} alt="a cart icon" />
+            {this.props.totalQuantity > 0 && (
+              <div>{this.props.totalQuantity}</div>
+            )}
+          </div>
         </div>
       </div>
     );
@@ -51,8 +56,10 @@ class Navbar extends Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state);
   return {
     categoryName: state.navbar.categoryName,
+    totalQuantity: state.cart.quantity,
   };
 };
 
