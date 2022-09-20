@@ -1,0 +1,78 @@
+.MiniCart .wrapper {
+  padding: 0;
+  position: fixed;
+  margin: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: var(--grey);
+  animation: show-wrapper var(--animation-duration) linear;
+}
+
+@keyframes show-wrapper {
+  from {
+    transform: scale(0, 0);
+    opacity: 0;
+    background-color: white;
+  }
+  to {
+    transform: scale(100%, 100%);
+    opacity: 1;
+    background-color: var(--grey);
+  }
+}
+
+.MiniCart .cart {
+  z-index: 1;
+  position: absolute;
+  background-color: white;
+  right: 72px;
+  padding: 32px 16px;
+  animation: show-cart var(--animation-duration) linear;
+}
+
+@keyframes show-cart {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+.MiniCart .cart > h1 {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 25.6px;
+}
+
+.MiniCart .cart > h1 > span:first-child {
+  font-weight: 700;
+}
+
+.MiniCart .cart > h1 > span:last-child {
+  font-weight: 500;
+}
+
+.MiniCart .cart .total-price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.MiniCart .cart .total-price > span:first-child {
+  font-family: Roboto;
+  line-height: 18px;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.MiniCart .cart .total-price > span:last-child {
+  line-height: 25.6px;
+  font-size: 1rem;
+  font-weight: 700;
+}

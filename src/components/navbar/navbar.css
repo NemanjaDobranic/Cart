@@ -1,7 +1,9 @@
 .Navbar {
-  margin: 0 100px;
+  padding: 0 100px;
   position: relative;
   display: grid;
+  background: white;
+  z-index: 2;
   grid-template-columns: 1fr 1fr 1fr;
 }
 
@@ -59,14 +61,14 @@
   align-self: center;
 }
 
-.Navbar .currency-cart div:last-child {
+.Navbar .currency-cart {
   position: relative;
 }
 
-.Navbar .currency-cart div:last-child > div {
+.Navbar .currency-cart img + div {
   position: absolute;
-  top: -50%;
-  right: -50%;
+  top: -10px;
+  right: -10px;
   border-radius: 60px;
   min-width: 14px;
   min-height: 14px;
@@ -75,6 +77,11 @@
   background-color: var(--black);
   color: white;
   text-align: center;
+  cursor: pointer;
+}
+
+.currency-cart > img:last-child:hover {
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 1024px) {
@@ -127,9 +134,9 @@
     justify-items: center;
   }
 
-  .Navbar .currency-cart div:last-child > div {
-    top: -6px;
-    right: -6px;
+  .Navbar .currency-cart img + div {
+    top: 55%;
+    right: 35%;
     min-width: 10px;
     min-height: 10px;
     padding: 2px;

@@ -8,8 +8,13 @@ import { getCategoriesAndCurrenciesQuery } from "../../resources/queries/queries
 import { connect } from "react-redux";
 import { setCategory } from "../../resources/actions/navbarActions";
 import { Link } from "react-router-dom";
+import MiniCart from "../mini-cart/MiniCart";
 
 class Navbar extends Component {
+  state = {
+    showMiniCart: false,
+  };
+
   componentDidUpdate() {
     if (!this.props.categoryName && !this.props.data.loading) {
       this.props.setCategory(this.props.data.categories[0].name);
@@ -34,29 +39,47 @@ class Navbar extends Component {
         ))
       : null;
 
+  handleCartIconClick = () => {
+    this.setState({
+      showMiniCart: !this.state.showMiniCart,
+    });
+  };
+
+  closeCart = () => {
+    this.setState({
+      showMiniCart: false,
+    });
+  };
+
   render() {
     return (
-      <div className="Navbar">
-        <ul className="categories">{this.displayCategories()}</ul>
-        <img src={BrandIcon} className="logo" alt="a brand logo" />
-        <div className="currency-cart">
-          {!this.props.data.loading && (
-            <Currencies currencies={this.props.data.currencies} />
-          )}
-          <div>
-            <img src={EmptyCart} alt="a cart icon" />
+      <div>
+        <div className="Navbar">
+          <ul className="categories">{this.displayCategories()}</ul>
+          <img src={BrandIcon} className="logo" alt="a brand logo" />
+          <div className="currency-cart">
+            {!this.props.data.loading && (
+              <Currencies currencies={this.props.data.currencies} />
+            )}
+            <img
+              src={EmptyCart}
+              alt="a cart icon"
+              onClick={this.handleCartIconClick}
+            />
             {this.props.totalQuantity > 0 && (
-              <div>{this.props.totalQuantity}</div>
+              <div onClick={this.handleCartIconClick}>
+                {this.props.totalQuantity}
+              </div>
             )}
           </div>
         </div>
+        {this.state.showMiniCart && <MiniCart closeCart={this.closeCart} />}
       </div>
     );
   }
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     categoryName: state.navbar.categoryName,
     totalQuantity: state.cart.quantity,

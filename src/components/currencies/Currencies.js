@@ -83,18 +83,20 @@ class Currencies extends Component {
           src={Arrow}
           alt="currency arrow"
         />
-        <ul className={"dropdown " + this.state.classNames.dropdown}>
-          {this.props.currencies
-            ? this.props.currencies.map((currency) => (
-                <li
-                  key={currency.label}
-                  onClick={() => this.setActiveCurrency(currency)}
-                >
-                  {currency.symbol}&nbsp;{currency.label}
-                </li>
-              ))
-            : null}
-        </ul>
+        {this.state.classNames.dropdown === "show" && (
+          <ul className={"dropdown " + this.state.classNames.dropdown}>
+            {this.props.currencies
+              ? this.props.currencies.map((currency) => (
+                  <li
+                    key={currency.label}
+                    onClick={() => this.setActiveCurrency(currency)}
+                  >
+                    {currency.symbol}&nbsp;{currency.label}
+                  </li>
+                ))
+              : null}
+          </ul>
+        )}
       </div>
     );
   }

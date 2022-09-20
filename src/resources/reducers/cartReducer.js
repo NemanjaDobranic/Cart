@@ -3,6 +3,8 @@ import { addProductType } from "../actions/cartActions";
 const initState = {
   products: [],
   quantity: 0,
+  totalPrices: null,
+  tax: 0.21,
 };
 
 const cartReducer = (state = initState, action) => {
@@ -24,6 +26,20 @@ const cartReducer = (state = initState, action) => {
     } else {
       sameProduct.quantity++;
     }
+
+    if (state.totalPrices) {
+      const newTotalPrices = product.prices.map((price) =>
+        state.totalPrices.find((totalPrice) =>
+          JSON.stringify(totalPrice.currency) === JSON.stringify(price.currency)
+            ? (totalPrice.amount += price.amount)
+            : totalPrice.amount
+        )
+      );
+      state.totalPrices = newTotalPrices;
+    } else {
+      state.totalPrices = product.prices;
+    }
+
     state.quantity++;
 
     return { ...state };
