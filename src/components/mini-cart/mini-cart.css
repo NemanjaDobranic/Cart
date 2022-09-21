@@ -29,7 +29,7 @@
   position: absolute;
   background-color: white;
   right: 72px;
-  padding: 32px 16px;
+  padding: 2rem 1rem;
   animation: show-cart var(--animation-duration) linear;
 }
 
@@ -48,6 +48,7 @@
   margin: 0;
   font-size: 1rem;
   line-height: 25.6px;
+  margin-bottom: 2rem;
 }
 
 .MiniCart .cart > h1 > span:first-child {
@@ -62,6 +63,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 32px 0;
 }
 
 .MiniCart .cart .total-price > span:first-child {
@@ -75,4 +77,32 @@
   line-height: 25.6px;
   font-size: 1rem;
   font-weight: 700;
+}
+
+.MiniCart .cart > div:last-child button {
+  min-width: 140px;
+  min-height: 43px;
+  text-transform: uppercase;
+  font-size: 14px;
+  line-height: 16.8px;
+  font-weight: 600;
+}
+
+.MiniCart .cart .footer button:hover {
+  cursor: pointer;
+  transform: scale(1.01, 1.01);
+  filter: contrast(1.1);
+}
+
+.MiniCart .cart .footer > button:first-child {
+  background: white;
+  border: 1px solid var(--black);
+  color: var(--black);
+  margin-right: 12px;
+}
+
+.MiniCart .cart .footer > button:last-child {
+  background: var(--green);
+  border: 1px solid var(--green);
+  color: white;
 }

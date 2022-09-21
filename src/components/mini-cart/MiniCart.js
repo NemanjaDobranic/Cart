@@ -2,6 +2,7 @@ import React from "react";
 import "./mini-cart.css";
 import { connect } from "react-redux";
 import { getPrice } from "../../resources/commonFunctions/commonFunctions";
+import Cart from "../cart/Cart";
 
 const MiniCart = ({ closeCart, totalQuantity, totalPrices, currency }) => {
   return (
@@ -12,11 +13,19 @@ const MiniCart = ({ closeCart, totalQuantity, totalPrices, currency }) => {
           <span>My Bag,&nbsp;</span>
           <span>{totalQuantity}&nbsp;items</span>
         </h1>
-
-        <div className="total-price">
-          <span>Total</span>
-          <span>{getPrice(totalPrices, currency)}</span>
-        </div>
+        {totalQuantity > 0 && (
+          <div>
+            <Cart />
+            <div className="total-price">
+              <span>Total</span>
+              <span>{getPrice(totalPrices, currency)}</span>
+            </div>
+            <div className="footer">
+              <button>view bag</button>
+              <button>check out</button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

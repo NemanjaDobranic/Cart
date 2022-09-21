@@ -1,0 +1,74 @@
+.Cart .product {
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+
+.Cart .product .info > h1:first-child {
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 25.6px;
+  margin: 0;
+  margin-bottom: 4px;
+}
+
+.Cart .product .info > h1:first-child + h1 {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 25.6px;
+  margin: 0;
+  margin-bottom: 8px;
+}
+
+.Cart .product .info .attribute {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.Cart .product .info .attribute > span {
+  font-family: "Roboto Condensed";
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 18px;
+}
+
+.Cart .product .info .attribute > div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.Cart .product .info .attribute > div .color {
+  width: 2rem;
+  height: 2rem;
+  position: relative;
+}
+
+.Cart .product .info .attribute > div .text {
+  font-family: "Source Sans Pro";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22.4px;
+  text-align: center;
+  color: var(--black);
+  padding: 5px;
+  background: white;
+  border: 1px solid var(--black);
+  min-width: 10%;
+}
+
+.Cart .product .info .attribute > div .text.selected {
+  background: var(--black);
+  color: white;
+}
+
+.Cart .product .info .attribute > div .color > div {
+  position: absolute;
+  border: 1px solid var(--green);
+  top: -2px;
+  bottom: -2px;
+  left: -2px;
+  right: -2px;
+}
