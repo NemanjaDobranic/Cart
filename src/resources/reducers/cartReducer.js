@@ -28,12 +28,19 @@ const cartReducer = (state = initState, action) => {
     }
 
     if (state.totalPrices) {
-      const newTotalPrices = product.prices.map((price) =>
-        state.totalPrices.find((totalPrice) =>
-          JSON.stringify(totalPrice.currency) === JSON.stringify(price.currency)
-            ? (totalPrice.amount += price.amount)
-            : totalPrice.amount
-        )
+      const newTotalPrices = [];
+      state.totalPrices.forEach((totalPrice) =>
+        product.prices.forEach((price) => {
+          if (
+            JSON.stringify(totalPrice.currency) ===
+            JSON.stringify(price.currency)
+          ) {
+            newTotalPrices.push({
+              ...totalPrice,
+              amount: totalPrice.amount + price.amount,
+            });
+          }
+        })
       );
       state.totalPrices = newTotalPrices;
     } else {
@@ -41,7 +48,6 @@ const cartReducer = (state = initState, action) => {
     }
 
     state.quantity++;
-
     return { ...state };
   }
 

@@ -4,5 +4,5 @@ export const getPrice = (prices, currency) => {
         (price) => JSON.stringify(price.currency) === JSON.stringify(currency)
       ).amount
     : 0;
-  return `${currency.symbol}${price}`;
+  return `${currency.symbol}${Math.round(price * 100) / 100}`;
 };
