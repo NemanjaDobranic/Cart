@@ -1,11 +1,18 @@
 .Cart {
-  width: 325px;
+  width: 326px;
+  max-height: 400px;
+  overflow: auto;
 }
 
 .Cart .product {
   display: grid;
-  grid-template-columns: 46% 8% 46%;
+  grid-template-columns: 45% auto 45%;
   gap: 8px;
+  margin-bottom: 40px;
+}
+
+.Cart .product:last-child {
+  margin: 0;
 }
 
 .Cart .product .info > h1:first-child {
