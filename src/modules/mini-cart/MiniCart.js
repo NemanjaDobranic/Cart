@@ -1,8 +1,8 @@
 import React from "react";
 import "./mini-cart.css";
 import { connect } from "react-redux";
-import { getPrice } from "../../resources/commonFunctions/commonFunctions";
-import Cart from "../cart/Cart";
+import { getPrice } from '../../resources/commonFunctions/commonFunctions'
+import Cart from "../../components/cart/Cart";
 
 const MiniCart = ({ closeCart, totalQuantity, totalPrices, currency }) => {
   return (

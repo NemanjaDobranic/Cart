@@ -78,6 +78,21 @@
     column-gap: 20px;
   }
 
+  .Description .product-gallery::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  .Description .product-gallery::-webkit-scrollbar-track {
+    background-color: #e4e4e4;
+    border-radius: 100px;
+  }
+
+  .Description .product-gallery::-webkit-scrollbar-thumb {
+    border-radius: 100px;
+    background-color: var(--green);
+    box-shadow: inset 2px 2px 5px 0 rgba(#fff, 0.5);
+  }
+
   .Description #active-image {
     padding: 70px 0;
   }

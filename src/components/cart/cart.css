@@ -1,9 +1,3 @@
-.Cart {
-  width: 326px;
-  max-height: 400px;
-  overflow: auto;
-}
-
 .Cart .product {
   display: grid;
   grid-template-columns: 45% auto 45%;

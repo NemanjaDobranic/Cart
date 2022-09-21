@@ -8,7 +8,7 @@ import { getCategoriesAndCurrenciesQuery } from "../../resources/queries/queries
 import { connect } from "react-redux";
 import { setCategory } from "../../resources/actions/navbarActions";
 import { Link } from "react-router-dom";
-import MiniCart from "../mini-cart/MiniCart";
+import MiniCart from "../../modules/mini-cart/MiniCart";
 
 class Navbar extends Component {
   state = {
