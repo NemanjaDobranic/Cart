@@ -10,7 +10,6 @@ const initState = {
 const cartReducer = (state = initState, action) => {
   if (action.type === addProductType) {
     const { product } = action;
-    console.log(product);
 
     //product with with same selected items in all attrs
     const sameProduct = state.products.find((p1) =>
@@ -18,14 +17,13 @@ const cartReducer = (state = initState, action) => {
         ? p1.attributes.every((a1) =>
             product.attributes.find(
               (a2) =>
+                a1.id === a2.id &&
                 JSON.stringify(a1.selectedItem) ===
-                JSON.stringify(a2.selectedItem)
+                  JSON.stringify(a2.selectedItem)
             )
           )
         : p1.id === product.id
     );
-
-    console.log(sameProduct);
 
     if (!sameProduct) {
       state.products.push({ ...product, quantity: 1 });
