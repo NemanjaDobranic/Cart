@@ -1,6 +1,11 @@
+.Cart {
+  width: 325px;
+}
+
 .Cart .product {
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: 46% 8% 46%;
+  gap: 8px;
 }
 
 .Cart .product .info > h1:first-child {
@@ -71,4 +76,8 @@
   bottom: -2px;
   left: -2px;
   right: -2px;
+}
+
+.Cart .product img {
+  max-width: 100%;
 }

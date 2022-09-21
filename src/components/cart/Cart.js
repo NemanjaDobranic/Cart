@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { getPrice } from "../../resources/commonFunctions/commonFunctions";
 
 const Cart = ({ products, currency }) => {
-  console.log(products);
   const displayProducts = () => {
     return products.map((product, index) => (
       <div className="product" key={index}>
@@ -43,6 +42,8 @@ const Cart = ({ products, currency }) => {
             </div>
           ))}
         </div>
+
+        <div>{product.quantity}</div>
 
         <img src={product.gallery[0]} alt="" />
       </div>
