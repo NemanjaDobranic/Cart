@@ -79,6 +79,31 @@
   right: -2px;
 }
 
+.Cart .product .quantity-control {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.Cart .product .quantity-control span:first-child,
+.Cart .product .quantity-control span:last-child {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--black);
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.Cart .product .quantity-control span:first-child + span {
+  font-size: 1rem;
+  line-height: 25.6px;
+  font-weight: 500;
+}
+
 .Cart .product img {
   max-width: 100%;
 }

@@ -43,7 +43,11 @@ const Cart = ({ products, currency }) => {
           ))}
         </div>
 
-        <div>{product.quantity}</div>
+        <div className="quantity-control">
+          <span>+</span>
+          <span>{product.quantity}</span>
+          <span>-</span>
+        </div>
 
         <img src={product.gallery[0]} alt="" />
       </div>
