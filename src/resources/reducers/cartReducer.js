@@ -1,4 +1,5 @@
 import { addProductType } from "../actions/cartActions";
+import { findSameProductIndex } from "../commonFunctions/commonFunctions";
 
 const initState = {
   products: [],
@@ -11,19 +12,8 @@ const cartReducer = (state = initState, action) => {
   if (action.type === addProductType) {
     const { product } = action;
 
-    //product with with same selected items in all attrs
-    const sameProduct = state.products.find((p1) =>
-      p1.attributes.length > 0 && product.attributes.length > 0
-        ? p1.attributes.every((a1) =>
-            product.attributes.find(
-              (a2) =>
-                a1.id === a2.id &&
-                JSON.stringify(a1.selectedItem) ===
-                  JSON.stringify(a2.selectedItem)
-            )
-          )
-        : p1.id === product.id
-    );
+    const index = findSameProductIndex(product, state.products);
+    const sameProduct = state.products[index];
 
     if (!sameProduct) {
       state.products.push({ ...product, quantity: 1 });
