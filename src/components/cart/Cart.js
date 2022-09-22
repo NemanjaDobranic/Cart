@@ -2,8 +2,9 @@ import React from "react";
 import "./cart.css";
 import { connect } from "react-redux";
 import { getPrice } from "../../resources/commonFunctions/commonFunctions";
+import { addProduct } from "../../resources/actions/cartActions";
 
-const Cart = ({ products, currency }) => {
+const Cart = ({ products, currency, addProduct }) => {
   const displayProducts = () => {
     return products.map((product, index) => (
       <div className="product" key={index}>
@@ -44,12 +45,12 @@ const Cart = ({ products, currency }) => {
         </div>
 
         <div className="quantity-control">
-          <span>+</span>
+          <span onClick={() => addProduct(product)}>+</span>
           <span>{product.quantity}</span>
           <span>-</span>
         </div>
 
-        <img src={product.gallery[0]} alt="" />
+        <img src={product.gallery[0]} alt={product.gallery[0]} />
       </div>
     ));
   };
@@ -58,9 +59,17 @@ const Cart = ({ products, currency }) => {
 
 const mapStateToProps = (state) => {
   return {
-    products: state.cart.products,
+    products: [...state.cart.products],
     currency: state.navbar.currency,
   };
 };
 
-export default connect(mapStateToProps)(Cart);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addProduct: (product) => {
+      dispatch(addProduct(product));
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cart);
