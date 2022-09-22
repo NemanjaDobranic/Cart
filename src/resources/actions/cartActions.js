@@ -6,4 +6,12 @@ const addProduct = (product) => {
   };
 };
 
-export { addProductType, addProduct };
+const removeProductType = "REMOVE_PRODUCT";
+const removeProduct = (product) => {
+  return {
+    type: removeProductType,
+    product: product,
+  };
+};
+
+export { addProductType, addProduct, removeProductType, removeProduct };

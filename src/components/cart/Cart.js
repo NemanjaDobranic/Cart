@@ -2,9 +2,9 @@ import React from "react";
 import "./cart.css";
 import { connect } from "react-redux";
 import { getPrice } from "../../resources/commonFunctions/commonFunctions";
-import { addProduct } from "../../resources/actions/cartActions";
+import { addProduct, removeProduct } from "../../resources/actions/cartActions";
 
-const Cart = ({ products, currency, addProduct }) => {
+const Cart = ({ products, currency, addProduct, removeProduct }) => {
   const displayProducts = () => {
     return products.map((product, index) => (
       <div className="product" key={index}>
@@ -47,7 +47,7 @@ const Cart = ({ products, currency, addProduct }) => {
         <div className="quantity-control">
           <span onClick={() => addProduct(product)}>+</span>
           <span>{product.quantity}</span>
-          <span>-</span>
+          <span onClick={() => removeProduct(product)}>-</span>
         </div>
 
         <img src={product.gallery[0]} alt={product.gallery[0]} />
@@ -68,6 +68,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     addProduct: (product) => {
       dispatch(addProduct(product));
+    },
+    removeProduct: (product) => {
+      dispatch(removeProduct(product));
     },
   };
 };

@@ -1,5 +1,8 @@
-import { addProductType } from "../actions/cartActions";
-import { findSameProductIndex } from "../commonFunctions/commonFunctions";
+import { addProductType, removeProductType } from "../actions/cartActions";
+import {
+  findSameProductIndex,
+  recalculateTotalPrices,
+} from "../commonFunctions/commonFunctions";
 
 const initState = {
   products: [],
@@ -11,7 +14,6 @@ const initState = {
 const cartReducer = (state = initState, action) => {
   if (action.type === addProductType) {
     const { product } = action;
-
     const index = findSameProductIndex(product, state.products);
     const sameProduct = state.products[index];
 
@@ -22,26 +24,36 @@ const cartReducer = (state = initState, action) => {
     }
 
     if (state.totalPrices) {
-      const newTotalPrices = [];
-      state.totalPrices.forEach((totalPrice) =>
-        product.prices.forEach((price) => {
-          if (
-            JSON.stringify(totalPrice.currency) ===
-            JSON.stringify(price.currency)
-          ) {
-            newTotalPrices.push({
-              ...totalPrice,
-              amount: totalPrice.amount + price.amount,
-            });
-          }
-        })
+      state.totalPrices = state.totalPrices = recalculateTotalPrices(
+        product.prices,
+        state.totalPrices
       );
-      state.totalPrices = newTotalPrices;
     } else {
       state.totalPrices = product.prices;
     }
 
     state.quantity++;
+    return { ...state };
+  }
+
+  if (action.type === removeProductType) {
+    const { product } = action;
+    const index = findSameProductIndex(product, state.products);
+
+    if (product.quantity > 1) {
+      state.products[index].quantity--;
+    } else {
+      state.products.splice(index, 1);
+    }
+
+    state.quantity--;
+
+    state.totalPrices = recalculateTotalPrices(
+      product.prices,
+      state.totalPrices,
+      false
+    );
+
     return { ...state };
   }
 

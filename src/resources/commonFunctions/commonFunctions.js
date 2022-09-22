@@ -12,8 +12,8 @@ export const getPrice = (prices, currency) => {
  * that matches to product passed together with products array
  * where both have same selected items in all product attributes or
  * with same product ids if product doesn't have attributes
- * @param {*} product
- * @param {*} products
+ * @param {object} product
+ * @param {Array} products
  * @returns non negative index if criteria is satisfied or -1
  */
 export const findSameProductIndex = (product, products) =>
@@ -29,3 +29,27 @@ export const findSameProductIndex = (product, products) =>
         )
       : p1.id === product.id
   );
+
+  /**
+   * Recalculates amount property for each totalPrice object in totalPrices 
+   * array based on amount property found in prices object array. 
+   * By deafult, third argument is set to true and addition is done. 
+   * Otherwise, to do the subtraction pass false as third argument.
+   * @param {Array} prices 
+   * @param {Array} totalPrices 
+   * @param {boolean} addition 
+   * @returns 
+   */
+export const recalculateTotalPrices = (prices, totalPrices, addition = true) =>
+  totalPrices.map((totalPrice) => {
+    const price = prices.find(
+      (price) =>
+        JSON.stringify(totalPrice.currency) === JSON.stringify(price.currency)
+    );
+    return {
+      ...totalPrice,
+      amount: addition
+        ? totalPrice.amount + price.amount
+        : totalPrice.amount - price.amount,
+    };
+  });
