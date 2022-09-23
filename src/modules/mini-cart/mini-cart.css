@@ -107,6 +107,13 @@
   font-weight: 600;
 }
 
+.MiniCart .cart .footer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+
 .MiniCart .cart .footer button:hover {
   cursor: pointer;
   transform: scale(1.01, 1.01);
@@ -117,7 +124,6 @@
   background: white;
   border: 1px solid var(--black);
   color: var(--black);
-  margin-right: 12px;
 }
 
 .MiniCart .cart .footer > button:last-child {
