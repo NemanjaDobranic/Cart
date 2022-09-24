@@ -24,7 +24,7 @@
   text-decoration: none;
   color: inherit;
   position: relative;
-  height: 25vw;
+  aspect-ratio: 3/4;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -144,12 +144,14 @@
 
   .Listing {
     row-gap: 75px;
+    margin: 0;
   }
 
   .Listing .product-grid {
     display: grid;
     grid-template-columns: repeat(2, 45%);
     column-gap: 10%;
+    justify-items: center;
   }
 
   .Listing .product-grid > a {
