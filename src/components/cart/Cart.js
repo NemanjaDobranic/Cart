@@ -53,9 +53,14 @@ const Cart = ({
         </div>
 
         <div className="quantity-control">
-          <span onClick={() => addProduct(product)}>+</span>
+          <button onClick={() => addProduct(product)}>
+            <div></div>
+            <div></div>
+          </button>
           <span>{product.quantity}</span>
-          <span onClick={() => removeProduct(product)}>-</span>
+          <button onClick={() => removeProduct(product)}>
+            <div></div>
+          </button>
         </div>
 
         <ProductGallery

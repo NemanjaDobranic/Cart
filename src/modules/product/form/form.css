@@ -162,6 +162,12 @@ input[type="checkbox"]:focus + .swatch > div {
 }
 
 @media only screen and (max-width: 1024px) {
+  .Form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   .Form > h1 {
     font-size: 19px;
     line-height: 19px;

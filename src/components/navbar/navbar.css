@@ -59,10 +59,11 @@
   column-gap: 42px;
   justify-self: right;
   align-self: center;
+  position: relative;
 }
 
-.Navbar .currency-cart {
-  position: relative;
+.Navbar .currency-cart img {
+  cursor: pointer;
 }
 
 .Navbar .currency-cart img + div {
@@ -135,10 +136,12 @@
   }
 
   .Navbar .currency-cart img + div {
-    top: 55%;
     min-width: 10px;
     min-height: 10px;
     padding: 2px;
     font-size: 8.5px;
+    top: auto;
+    bottom: 10px;
+    right: -2px;
   }
 }

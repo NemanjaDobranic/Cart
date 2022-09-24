@@ -8,11 +8,11 @@ import { getCategoriesAndCurrenciesQuery } from "../../resources/queries/queries
 import { connect } from "react-redux";
 import { setCategory } from "../../resources/actions/navbarActions";
 import { Link } from "react-router-dom";
-import MiniCart from "../../modules/mini-cart/MiniCart";
+import Minicart from "../../modules/minicart/Minicart";
 
 class Navbar extends Component {
   state = {
-    showMiniCart: false,
+    showMinicart: false,
   };
 
   componentDidUpdate() {
@@ -41,13 +41,13 @@ class Navbar extends Component {
 
   handleCartIconClick = () => {
     this.setState({
-      showMiniCart: !this.state.showMiniCart,
+      showMinicart: !this.state.showMinicart,
     });
   };
 
   closeCart = () => {
     this.setState({
-      showMiniCart: false,
+      showMinicart: false,
     });
   };
 
@@ -73,7 +73,7 @@ class Navbar extends Component {
             )}
           </div>
         </div>
-        {this.state.showMiniCart && <MiniCart closeCart={this.closeCart} />}
+        {this.state.showMinicart && <Minicart closeCart={this.closeCart} />}
       </div>
     );
   }

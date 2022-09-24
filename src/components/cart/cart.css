@@ -81,22 +81,40 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
   text-align: center;
 }
 
-.Cart .product .quantity-control span:first-child,
-.Cart .product .quantity-control span:last-child {
+.Cart .product .quantity-control > button:first-child,
+.Cart .product .quantity-control > button:last-child {
+  min-width: auto;
+  min-height: auto;
   width: 24px;
   height: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   border: 1px solid var(--black);
   cursor: pointer;
-  font-size: 20px;
+  font-weight: 100;
+  background-color: white;
+  padding: 0;
+  position: relative;
 }
 
-.Cart .product .quantity-control span:first-child + span {
+.Cart .product .quantity-control > button > div {
+  position: absolute;
+  margin: auto;
+  background-color: var(--black);
+  height: 0.1px;
+  width: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.Cart .product .quantity-control > button:first-child > div:first-child {
+  transform: translate(-50%, -50%) rotate(-90deg);
+}
+
+.Cart .product .quantity-control > button:first-child + span {
   font-size: 1rem;
   line-height: 25.6px;
   font-weight: 500;

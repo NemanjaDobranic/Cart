@@ -1,5 +1,5 @@
 import React from "react";
-import "./mini-cart.css";
+import "./minicart.css";
 import { connect } from "react-redux";
 import { getPrice } from "../../resources/commonFunctions/commonFunctions";
 import Cart from "../../components/cart/Cart";

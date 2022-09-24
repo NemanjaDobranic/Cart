@@ -32,6 +32,7 @@
   height: max-content;
   box-sizing: border-box;
   padding: 0 100px 0 42px;
+  height: 70%;
 }
 
 .Description #active-image.fadeIn {
@@ -95,6 +96,9 @@
 
   .Description #active-image {
     padding: 70px 0;
+    margin: auto;
+    width: 60%;
+    height: 80%;
   }
 }
 
