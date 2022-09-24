@@ -16,7 +16,9 @@ class Checkout extends Component {
 
     if (!quantity) return <Redirect exact to="/" />;
 
-    const bill = parseFloat(getPrice(totalPrices, currency).substring(1));
+    const bill = parseFloat(
+      getPrice(totalPrices, currency).substring(currency.symbol.length)
+    );
 
     return (
       <div className="Checkout">

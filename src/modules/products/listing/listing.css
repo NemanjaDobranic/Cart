@@ -144,7 +144,6 @@
 
   .Listing {
     row-gap: 75px;
-    margin: 0;
   }
 
   .Listing .product-grid {
@@ -182,6 +181,10 @@
 }
 
 @media only screen and (max-width: 768px) {
+  .Listing {
+    margin-top: 40px;
+  }
+
   .Listing h1 {
     text-align: center;
   }
