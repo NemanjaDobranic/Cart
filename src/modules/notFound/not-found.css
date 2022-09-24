@@ -1,0 +1,34 @@
+.NotFound {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.NotFound > img {
+  filter: invert(71%) sepia(53%) saturate(430%) hue-rotate(83deg)
+    brightness(93%) contrast(84%);
+}
+
+@media only screen and (max-width: 1024px) {
+  .NotFound > img {
+    width: 75%;
+  }
+
+  .NotFound > p {
+    font-size: 13px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .NotFound > img {
+    width: 80%;
+  }
+
+  .NotFound {
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+  }
+}

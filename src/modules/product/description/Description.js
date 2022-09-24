@@ -29,7 +29,7 @@ class Description extends Component {
       history,
     } = nextProps;
 
-    if (!product.inStock) {
+    if (!product || !product.inStock) {
       history.push("/");
       return false;
     }
