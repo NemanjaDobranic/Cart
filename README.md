@@ -2,6 +2,6 @@ Before you start, you need endpoint, which can be fonud on: https://github.com/s
 
 How to start
 
-Clone repository
-Install dependencies (npm i)
-Start the project (npm start)
+1. Clone repository
+2. Install dependencies (npm i)
+3. Start the project (npm start)
