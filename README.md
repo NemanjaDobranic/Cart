@@ -59,28 +59,28 @@ Backend server should start on **_http://localhost:4000/_**
 - **Product Listing Page (PLP):** Display products categorized for easy navigation.
 
 <p align="center">
-    <img src="./src/assets/snapshots/pdp-1.png" width="22%" />
-    <img src="./src/assets/snapshots/pdp-2.png" width="22%" />
+    <img src="./src/assets/snapshots/pdp-1.png" width="40%" />
+    <img src="./src/assets/snapshots/pdp-2.png" width="40%" />
 </p>
 
 - **Product Description Page (PDP):** Provide detailed information about individual products.
 
 <p align="center">
-    <img src="./src/assets/snapshots/plp-1.png" width="22%" />
-    <img src="./src/assets/snapshots/plp-2.png" width="22%" />
+    <img src="./src/assets/snapshots/plp-1.png" width="40%" />
+    <img src="./src/assets/snapshots/plp-2.png" width="40%" />
 </p>
 
 - **Cart Page + Cart Overlay (Minicart):** Manage added products, adjust quantities, and utilize a convenient minicart overlay.
 
 <p align="center">
-    <img src="./src/assets/snapshots/cart.png" width="22%" />
+    <img src="./src/assets/snapshots/cart.png" width="40%" />
     <img src="./src/assets/snapshots/minicart.png" width="22%" />
 </p>
 
 - **Additional Features:** Various options (attributes) for products and currency change functionality.
 
 <p align="center">
-    <img src="./src/assets/snapshots/conversion.png" width="22%" />
+    <img src="./src/assets/snapshots/conversion.png" width="50%" />
 </p>
 
 ## License
