@@ -1,20 +1,88 @@
-Before you start, you need endpoint, which can be fonud on: https://github.com/scandiweb/junior-react-endpoint
+# Cart Application
 
-## How to start
+### Introduction
 
-1. Clone repository
-2. Install dependencies (npm i)
-3. Start the project (npm start)
+Welcome to the Cart Application! This repository hosts a React-based frontend and Node.js-based backend to create a comprehensive shopping cart experience. The application provides essential features such as product listing, detailed product descriptions, and a user-friendly cart management system.
 
-## Functionality requirements
+### Table of Contents
 
-- PLP - product listing page, a.k.a. category page
-- PDP - product description page, a.k.a. product page
-- Cart page + Cart overlay (minicart)
+1. [Installation](installation)
+2. [Features](features)
+3. Licence
 
-## Details
+## Installation
 
-- Ability to add/remove products and change their amounts in cart
-- Products can have various options (attributes).
-- Filtering products by category name for all of the categories from BE
-- Ability to change the currency of the store to one of the available currencies etc.
+1. Clone the repository
+
+```bash
+git clone https://github.com/NemanjaDobranic/cart.git
+```
+
+2. Install dependencies
+
+Naviagte to the root directory and run:
+
+```bash
+npm install
+```
+
+3. Start the project
+
+```bash
+npm start
+```
+
+Frontend server should start on **_http://localhost:3000/_**
+
+4. Navigate to the **_src/server_** directory:
+
+```bash
+npm install
+```
+
+5. Build the server:
+
+```bash
+npm build
+```
+
+6. Start the server:
+
+```bash
+npm start
+```
+
+Backend server should start on **_http://localhost:4000/_**
+
+## Features
+
+- **Product Listing Page (PLP):** Display products categorized for easy navigation.
+
+<p align="center">
+    <img src="./src/assets/snapshots/pdp-1.png" width="22%" />
+    <img src="./src/assets/snapshots/pdp-2.png" width="22%" />
+</p>
+
+- **Product Description Page (PDP):** Provide detailed information about individual products.
+
+<p align="center">
+    <img src="./src/assets/snapshots/plp-1.png" width="22%" />
+    <img src="./src/assets/snapshots/plp-2.png" width="22%" />
+</p>
+
+- **Cart Page + Cart Overlay (Minicart):** Manage added products, adjust quantities, and utilize a convenient minicart overlay.
+
+<p align="center">
+    <img src="./src/assets/snapshots/cart.png" width="22%" />
+    <img src="./src/assets/snapshots/minicart.png" width="22%" />
+</p>
+
+- **Additional Features:** Various options (attributes) for products and currency change functionality.
+
+<p align="center">
+    <img src="./src/assets/snapshots/conversion.png" width="22%" />
+</p>
+
+## License
+
+This project is licensed under the [MIT License](https://opensource.org/license/mit/). You are free to use, modify, and distribute it as per the terms of the license.
