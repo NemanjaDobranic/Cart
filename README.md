@@ -8,7 +8,7 @@ Welcome to the Cart Application! This repository hosts a React-based frontend an
 
 1. [Installation](installation)
 2. [Features](features)
-3. Licence
+3. [Licence](licence)
 
 ## Installation
 
@@ -59,15 +59,15 @@ Backend server should start on **_http://localhost:4000/_**
 - **Product Listing Page (PLP):** Display products categorized for easy navigation.
 
 <p align="center">
-    <img src="./src/assets/snapshots/pdp-1.png" width="70%" />
-    <img src="./src/assets/snapshots/pdp-2.png" width="70%" />
+    <img src="./src/assets/snapshots/plp-1.png" width="70%" />
+    <img src="./src/assets/snapshots/plp-2.png" width="70%" />
 </p>
 
 - **Product Description Page (PDP):** Provide detailed information about individual products.
 
 <p align="center">
-    <img src="./src/assets/snapshots/plp-1.png" width="70%" />
-    <img src="./src/assets/snapshots/plp-2.png" width="70%" />
+    <img src="./src/assets/snapshots/pdp-1.png" width="70%" />
+    <img src="./src/assets/snapshots/pdp-2.png" width="70%" />
 </p>
 
 - **Cart Page + Cart Overlay (Minicart):** Manage added products, adjust quantities, and utilize a convenient minicart overlay.
